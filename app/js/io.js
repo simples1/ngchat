@@ -3,6 +3,7 @@ factory('io', function ($http) {
   var socket,
     ioServer,
     ioRoom,
+    uu =[],
     watches = {};
 
   return {
@@ -13,6 +14,16 @@ factory('io', function ($http) {
       ioRoom = conf.ioRoom;
 
       socket = io.connect(conf.ioServer);
+
+
+      socket.on('event.get_users', function (data) {
+        console.log("users", data)
+        console.log('aaa',watches['user_list2'](data))
+        console.log('bbb', data)
+        return watches['user_list2'](data);
+
+      })
+
       socket.on('event.response', function (data) {
         console.log('respones', data)
         var message = data;
@@ -36,6 +47,7 @@ factory('io', function ($http) {
       });
     },
 
+
     watch: function (item, data) {
       console.log("watch", item)
       watches[item] = data;
@@ -44,6 +56,10 @@ factory('io', function ($http) {
     unWatch: function (item) {
       console.log("Unwatch")
       delete watches[item];
+    },
+
+    newUser: function (item) {
+      socket.emit('event.new_user', item);
     }
   };
 });

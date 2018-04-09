@@ -5,6 +5,7 @@ var io = require('socket.io')(server);
 
 var port = 3696;
 var connections = []
+var users = []
 
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
@@ -33,7 +34,19 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
+    users.splice(users.indexOf( socket.username), 1)
+    updateUsernames();
     console.log('user disconnected...');
   });
 
+  socket.on('event.new_user', function (user) {
+    socket.username = user
+    users.push(user);
+    updateUsernames();
+    console.log('new user ....', users);
+  });
+
+  function updateUsernames(){
+    io.sockets.emit('event.get_users',  users)
+  }
 });
