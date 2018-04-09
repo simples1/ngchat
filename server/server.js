@@ -12,10 +12,8 @@ server.listen(port, function () {
 });
 
 io.sockets.on('connection', function (socket) {
-
-  console.log('user connected...');
   connections.push(socket)
-  console.log('Connnected sockets = %s', connections.length);
+  console.log('user connected... Connnected sockets = %s', connections.length);
   socket.events = {};
 
   socket.on('event.message', function (payload) {

@@ -1,10 +1,5 @@
 angular.module('myApp', ['io.service']).
 
-run(function (io) {
-
-
-}).
-
 controller('MainController', function ($scope, io) {
   $scope.hideChatArea = true;
   $scope.hideLoginArea = false;
@@ -19,9 +14,7 @@ controller('MainController', function ($scope, io) {
     });
 
     io.newUser($scope.nickname);
-
   }
-
 
   $scope.send = function () {
     io.emit({

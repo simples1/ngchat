@@ -14,14 +14,8 @@ factory('io', function ($http) {
       ioRoom = conf.ioRoom;
 
       socket = io.connect(conf.ioServer);
-
-
       socket.on('event.get_users', function (data) {
-        console.log("users", data)
-        console.log('aaa',watches['user_list2'](data))
-        console.log('bbb', data)
         return watches['user_list2'](data);
-
       })
 
       socket.on('event.response', function (data) {
