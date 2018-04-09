@@ -2,9 +2,7 @@ angular.module('myApp', ['io.service']).
 
 run(function (io) {
 
-    io.init({
-      ioServer: 'http://localhost:3696',
-    });
+
 }).
 
 controller('MainController', function ($scope, io) {
@@ -16,7 +14,9 @@ controller('MainController', function ($scope, io) {
     $scope.hideChatArea = false;
     $scope.hideLoginArea = true;
 
-
+    io.init({
+      ioServer: 'http://localhost:3696',
+    });
 
     io.newUser($scope.nickname);
 
