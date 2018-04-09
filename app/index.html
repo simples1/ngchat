@@ -3,15 +3,55 @@
 
 <head>
   <title>mini-chat</title>
+
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+  <style type="text/css">
+    body{
+      margin-top: 30px;
+    }
+    .chattime{
+      text-align: right;
+    }
+  </style>
 </head>
 
 <body ng-app="myApp">
   <div ng-controller="MainController">
-    <input type="text" ng-model="message">
+<!--     <input type="text" ng-model="message">
     <button ng-click="send()">Send</button>
     <hr>
-    <h1>{{lastMessage}}</h1>
-    <div id="chat"></div>
+    <h1>{{lastMessage}}</h1> -->
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well">
+            <h3>Participants</h3>
+            <ul id="users" class="list-group">
+              
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-md-8">
+          <div id="chat" class="chat"></div>
+
+          <form>
+            <div class="form-group">
+              <label>Enter Text</label>
+              <input type="text" ng-model="message" class="form-control"> <br>
+              <button ng-click="send()" class="btn btn-primary">Send</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>

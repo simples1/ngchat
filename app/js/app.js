@@ -20,7 +20,7 @@ controller('MainController', function ($scope, io) {
   io.watch('message', function (data) {
     console.log("watch",data)
     $scope.lastMessage = data.message;
-    $("#chat").append("<div>"+data.message+"</div>");
+    $("#chat").append("<div class='well'><div>"+data.message+"</div><div class='chattime'>"+ new Date().toUTCString() +"</div></div>");
     $scope.$apply();
   });
 });
