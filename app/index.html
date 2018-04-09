@@ -13,6 +13,9 @@
     .chattime{
       text-align: right;
     }
+    .username{
+      margin-right: 6px;
+    }
   </style>
 </head>
 
@@ -39,7 +42,7 @@
             <div class="well">
               <h3>Participants</h3>
               <ul id="users" class="list-group">
-                <li ng-repeat= "name in list_users"> {{ name }}</li>
+                <li class='list-group-item' ng-repeat= "name in list_users"> {{ name }}</li>
               </ul>
             </div>
           </div>

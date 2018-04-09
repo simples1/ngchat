@@ -19,8 +19,9 @@ io.sockets.on('connection', function (socket) {
   socket.events = {};
 
   socket.on('event.message', function (payload) {
-    console.log("payload ",payload)
+    payload["message"]['username'] = socket.username
     io.sockets.emit('event.response', payload);
+    console.log("payload ",payload)
   });
 
   socket.on('event.subscribe', function (room) {
@@ -43,7 +44,7 @@ io.sockets.on('connection', function (socket) {
     socket.username = user
     users.push(user);
     updateUsernames();
-    console.log('new user ....', users);
+    console.log('new users ....', users);
   });
 
   function updateUsernames(){

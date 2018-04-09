@@ -38,7 +38,8 @@ controller('MainController', function ($scope, io) {
   });
 
   io.watch('message', function (data) {
-    $("#chat").append("<div class='well'><div>"+data.message+"</div><div class='chattime'>"+ new Date().toUTCString() +"</div></div>");
+    console.log(data)
+    $("#chat").append("<div class='well'><div><b class='username'>"+data.username+":</b>"+data.message+"</div><div class='chattime'>"+ new Date().toUTCString() +"</div></div>");
 
     $scope.$apply();
   });
